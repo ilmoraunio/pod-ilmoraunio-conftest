@@ -1,4 +1,4 @@
-module github.com/ilmoraunio/pod-conftest-parser
+module github.com/ilmoraunio/pod-ilmoraunio-conftest
 
 go 1.22.6
 

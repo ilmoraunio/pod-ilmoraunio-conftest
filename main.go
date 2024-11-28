@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/ilmoraunio/pod-conftest-parser/babashka"
+	"github.com/ilmoraunio/pod-ilmoraunio-conftest/babashka"
 	"github.com/open-policy-agent/conftest/parser"
 	"github.com/russolsen/transit"
 )
@@ -64,7 +64,7 @@ func processMessage(message *babashka.Message) {
 				Format: "transit+json",
 				Namespaces: []babashka.Namespace{
 					{
-						Name: "pod.babashka.conftest-parser",
+						Name: "pod.ilmoraunio.conftest",
 						Vars: []babashka.Var{
 							{
 								Name: "parse",
@@ -81,7 +81,7 @@ func processMessage(message *babashka.Message) {
 		}
 
 		switch message.Var {
-		case "pod.babashka.conftest-parser/parse":
+		case "pod.ilmoraunio.conftest/parse":
 			configs, err := parser.ParseConfigurations(args)
 			if err != nil {
 				babashka.WriteErrorResponse(message, err)
