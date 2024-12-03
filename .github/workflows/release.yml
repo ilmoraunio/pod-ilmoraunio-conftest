@@ -19,7 +19,9 @@ jobs:
         run: go install
       - name: Build binary
         run: go build
+      - name: Debug
+        run: Get-ChildItem
       - name: Produce artifact
-        run: Compress-Archive -Path pod-ilmoraunio-conftest -DestinationPath pod-ilmoraunio-conftest-parser-%VERSION%-windows-amd64.zip
+        run: Compress-Archive -Path "pod-ilmoraunio-conftest" -DestinationPath "pod-ilmoraunio-conftest-parser-%VERSION%-windows-amd64.zip"
       - name: Release artifact
         run: bb release-artifact --file pod-ilmoraunio-conftest-parser-%VERSION%-windows-amd64.zip
