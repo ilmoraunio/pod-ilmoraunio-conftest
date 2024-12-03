@@ -7,6 +7,10 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Read version to environment
+        run: |
+          $version = Get-Content -Path "resources/POD_ILMORAUNIO_CONFTEST_PARSER"
+          echo "VERSION=$version" >> $env:GITHUB_ENV
       - name: Download bb
         run: powershell -Command "if (Test-Path('bb.exe')) { return } else { (New-Object Net.WebClient).DownloadFile('https://github.com/borkdude/babashka/releases/download/v1.0.169/babashka-1.0.169-windows-amd64.zip', 'bb.zip') }"
       - name: Extract bb
@@ -24,6 +28,6 @@ jobs:
       - name: Produce artifact
         run: Compress-Archive -Path "pod-ilmoraunio-conftest.exe" -DestinationPath "pod-ilmoraunio-conftest-parser-%VERSION%-windows-amd64.zip"
       - name: Release artifact
-        run: .\bb.exe release-artifact --file pod-ilmoraunio-conftest-parser-%VERSION%-windows-amd64.zip
+        run: .\bb.exe release-artifact --file pod-ilmoraunio-conftest-parser-$env:VERSION-windows-amd64.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
