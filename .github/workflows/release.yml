@@ -26,7 +26,7 @@ jobs:
       - name: Debug
         run: Get-ChildItem
       - name: Produce artifact
-        run: Compress-Archive -Path "pod-ilmoraunio-conftest.exe" -DestinationPath "pod-ilmoraunio-conftest-parser-%VERSION%-windows-amd64.zip"
+        run: Compress-Archive -Path "pod-ilmoraunio-conftest.exe" -DestinationPath pod-ilmoraunio-conftest-parser-$env:VERSION-windows-amd64.zip
       - name: Release artifact
         run: .\bb.exe release-artifact --file pod-ilmoraunio-conftest-parser-$env:VERSION-windows-amd64.zip
         env:
