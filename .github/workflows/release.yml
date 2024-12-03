@@ -24,4 +24,4 @@ jobs:
       - name: Produce artifact
         run: Compress-Archive -Path "pod-ilmoraunio-conftest.exe" -DestinationPath "pod-ilmoraunio-conftest-parser-%VERSION%-windows-amd64.zip"
       - name: Release artifact
-        run: bb release-artifact --file pod-ilmoraunio-conftest-parser-%VERSION%-windows-amd64.zip
+        run: bb.exe release-artifact --file pod-ilmoraunio-conftest-parser-%VERSION%-windows-amd64.zip
