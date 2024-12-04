@@ -3,10 +3,10 @@ name: Release
 on: push
 
 jobs:
-  build:
+  windows-build:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Read version to environment
         run: |
           $version = Get-Content -Path "resources/POD_ILMORAUNIO_CONFTEST_PARSER"
@@ -29,5 +29,33 @@ jobs:
         run: Compress-Archive -Path "pod-ilmoraunio-conftest.exe" -DestinationPath pod-ilmoraunio-conftest-parser-$env:VERSION-windows-amd64.zip
       - name: Release artifact
         run: .\bb.exe release-artifact --file pod-ilmoraunio-conftest-parser-$env:VERSION-windows-amd64.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  macos-build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Read version to environment
+        run: echo "VERSION=$(cat resources/POD_ILMORAUNIO_CONFTEST_PARSER)" >> $GITHUB_ENV
+      - name: Install babashka
+        uses: DeLaGuardo/setup-clojure@13.0
+        with:
+          bb: 1.12.195
+      - name: Install Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.22.6'
+      - name: Debug
+        run: go version
+      - name: Install deps
+        run: go install
+      - name: Build binary
+        run: go build
+      - name: Debug
+        run: ls -lart
+      - name: Produce artifact
+        run: zip pod-ilmoraunio-conftest-parser-$VERSION-macos-aarch64.zip pod-ilmoraunio-conftest
+      - name: Release artifact
+        run: bb release-artifact --file pod-ilmoraunio-conftest-parser-$VERSION-macos-aarch64.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
