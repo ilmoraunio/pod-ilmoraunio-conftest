@@ -46,7 +46,7 @@ jobs:
         with:
           go-version: '1.22.6'
       - name: Debug
-        run: go version
+        run: go version && uname -a
       - name: Install deps
         run: go install
       - name: Build binary
@@ -57,5 +57,33 @@ jobs:
         run: zip pod-ilmoraunio-conftest-parser-$VERSION-macos-aarch64.zip pod-ilmoraunio-conftest
       - name: Release artifact
         run: bb release-artifact --file pod-ilmoraunio-conftest-parser-$VERSION-macos-aarch64.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  linux-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Read version to environment
+        run: echo "VERSION=$(cat resources/POD_ILMORAUNIO_CONFTEST_PARSER)" >> $GITHUB_ENV
+      - name: Install babashka
+        uses: DeLaGuardo/setup-clojure@13.0
+        with:
+          bb: 1.12.195
+      - name: Install Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.22.6'
+      - name: Debug
+        run: go version && uname -a
+      - name: Install deps
+        run: go install
+      - name: Build binary
+        run: go build
+      - name: Debug
+        run: ls -lart
+      - name: Produce artifact
+        run: zip pod-ilmoraunio-conftest-parser-$VERSION-linux-amd64.zip pod-ilmoraunio-conftest
+      - name: Release artifact
+        run: bb release-artifact --file pod-ilmoraunio-conftest-parser-$VERSION-linux-amd64.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
