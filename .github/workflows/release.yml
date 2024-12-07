@@ -23,6 +23,8 @@ jobs:
         run: go install
       - name: Build binary
         run: go build
+      - name: Test build
+        run: .\bb.exe --config test.bb.edn test:bb
       - name: Debug
         run: Get-ChildItem
       - name: Produce artifact
@@ -51,6 +53,8 @@ jobs:
         run: go install
       - name: Build binary
         run: go build
+      - name: Test build
+        run: ./scripts/test
       - name: Debug
         run: ls -lart
       - name: Produce artifact
@@ -79,6 +83,8 @@ jobs:
         run: go install
       - name: Build binary
         run: go build
+      - name: Test build
+        run: ./scripts/test
       - name: Debug
         run: ls -lart
       - name: Produce artifact
