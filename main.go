@@ -56,6 +56,21 @@ func parseArgs(args string) ([]string, error) {
 	return retval, nil
 }
 
+func parseArgsWithParser(args string) (string, []string, error) {
+	value, err := parseArgs(args)
+	if err != nil {
+		return "", []string{}, err
+	}
+	if value == nil {
+		return "", nil, nil
+	}
+
+	parser := value[0]
+	files := value[1:]
+
+	return parser, files, nil
+}
+
 func processMessage(message *babashka.Message) {
 	switch message.Op {
 	case "describe":
@@ -69,23 +84,39 @@ func processMessage(message *babashka.Message) {
 							{
 								Name: "parse",
 							},
+							{
+								Name: "parse-as",
+							},
 						},
 					},
 				},
 			})
 	case "invoke":
-		args, err := parseArgs(message.Args)
-		if err != nil {
-			babashka.WriteErrorResponse(message, err)
-			return
-		}
-
 		switch message.Var {
 		case "pod.ilmoraunio.conftest/parse":
+			args, err := parseArgs(message.Args)
+			if err != nil {
+				babashka.WriteErrorResponse(message, err)
+				return
+			}
+
 			configs, err := parser.ParseConfigurations(args)
 			if err != nil {
 				babashka.WriteErrorResponse(message, err)
 				return
+			} else {
+				respond(message, configs)
+			}
+		case "pod.ilmoraunio.conftest/parse-as":
+			parserArg, args, err := parseArgsWithParser(message.Args)
+			if err != nil {
+				babashka.WriteErrorResponse(message, err)
+				return
+			}
+
+			configs, err := parser.ParseConfigurationsAs(args, parserArg)
+			if err != nil {
+				babashka.WriteErrorResponse(message, err)
 			} else {
 				respond(message, configs)
 			}
