@@ -13,6 +13,10 @@ This project uses [Break Versioning][breakver]. The version numbers follow a
 
 [breakver]: https://github.com/ptaoussanis/encore/blob/master/BREAK-VERSIONING.md
 
+## 0.0.2
+
+- [101db8b](https://github.com/ilmoraunio/pod-ilmoraunio-conftest/commit/101db8b5cea2afc7f5ed704423ffa32594c9ef7e) Add parse-as for explicit parser support
+
 ## 0.0.1
 
 First release! 🎉
