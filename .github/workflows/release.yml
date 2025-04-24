@@ -102,3 +102,34 @@ jobs:
         run: bb release-artifact --file pod-ilmoraunio-conftest-$VERSION-linux-amd64.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  linux-arm64:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read version to environment
+        run: echo "VERSION=$(cat resources/POD_ILMORAUNIO_CONFTEST)" >> $GITHUB_ENV
+      - name: Install babashka
+        uses: DeLaGuardo/setup-clojure@13.0
+        with:
+          bb: 1.12.195
+      - name: Install Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.22.6'
+      - name: Debug
+        run: go version && uname -a
+      - name: Install deps
+        run: go install
+      - name: Build binary
+        run: go build
+      - name: Test build
+        run: ./scripts/test
+      - name: Debug
+        run: ls -lart
+      - name: Produce artifact
+        run: zip pod-ilmoraunio-conftest-$VERSION-linux-arm64.zip pod-ilmoraunio-conftest
+      - name: Release artifact
+        if: github.event_name == 'push'
+        run: bb release-artifact --file pod-ilmoraunio-conftest-$VERSION-linux-arm64.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
