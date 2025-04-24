@@ -3,7 +3,7 @@ name: Release
 on: push
 
 jobs:
-  windows-build:
+  windows-amd64:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
@@ -33,7 +33,7 @@ jobs:
         run: .\bb.exe release-artifact --file pod-ilmoraunio-conftest-$env:VERSION-windows-amd64.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  macos-build:
+  macos-arm64:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
@@ -63,7 +63,7 @@ jobs:
         run: bb release-artifact --file pod-ilmoraunio-conftest-$VERSION-macos-aarch64.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  linux-build:
+  linux-amd64:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
