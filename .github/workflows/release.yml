@@ -74,7 +74,7 @@ jobs:
   linux-amd64:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Read version to environment
         run: echo "VERSION=$(cat resources/POD_ILMORAUNIO_CONFTEST)" >> $GITHUB_ENV
       - name: Install babashka
