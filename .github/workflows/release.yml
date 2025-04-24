@@ -1,6 +1,12 @@
 name: Release
 
-on: push
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
 
 jobs:
   windows-amd64:
@@ -30,6 +36,7 @@ jobs:
       - name: Produce artifact
         run: Compress-Archive -Path "pod-ilmoraunio-conftest.exe" -DestinationPath pod-ilmoraunio-conftest-$env:VERSION-windows-amd64.zip
       - name: Release artifact
+        if: github.event_name == 'push'
         run: .\bb.exe release-artifact --file pod-ilmoraunio-conftest-$env:VERSION-windows-amd64.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -60,6 +67,7 @@ jobs:
       - name: Produce artifact
         run: zip pod-ilmoraunio-conftest-$VERSION-macos-aarch64.zip pod-ilmoraunio-conftest
       - name: Release artifact
+        if: github.event_name == 'push'
         run: bb release-artifact --file pod-ilmoraunio-conftest-$VERSION-macos-aarch64.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -90,6 +98,7 @@ jobs:
       - name: Produce artifact
         run: zip pod-ilmoraunio-conftest-$VERSION-linux-amd64.zip pod-ilmoraunio-conftest
       - name: Release artifact
+        if: github.event_name == 'push'
         run: bb release-artifact --file pod-ilmoraunio-conftest-$VERSION-linux-amd64.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
