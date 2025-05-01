@@ -13,6 +13,8 @@ This project uses [Break Versioning][breakver]. The version numbers follow a
 
 [breakver]: https://github.com/ptaoussanis/encore/blob/master/BREAK-VERSIONING.md
 
+## 0.0.4-SNAPSHOT
+
 ## 0.0.3
 
 - Add linux arm64 build [#2](https://github.com/ilmoraunio/pod-ilmoraunio-conftest/pull/2)
