@@ -13,7 +13,9 @@ This project uses [Break Versioning][breakver]. The version numbers follow a
 
 [breakver]: https://github.com/ptaoussanis/encore/blob/master/BREAK-VERSIONING.md
 
-## 0.0.4-SNAPSHOT
+## 0.0.4
+
+- Bump dependency versions for conftest, babashka, go, & for CI dependencies [#4](https://github.com/ilmoraunio/pod-ilmoraunio-conftest/pull/4)
 
 ## 0.0.3
 
