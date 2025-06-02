@@ -1,7 +1,7 @@
 {:tasks
  {test:bb {:extra-paths ["test"]
-           :extra-deps {io.github.cognitect-labs/test-runner
-                        {:git/tag "v0.5.1" :git/sha "dfb30dd"}}
+           :extra-deps {io.github.cognitect-labs/test-runner {:git/tag "v0.5.1" :git/sha "dfb30dd"}
+                        nubank/matcher-combinators {:mvn/version "3.9.1"}}}
            :task (exec 'cognitect.test-runner.api/test)
            :exec-args {:dirs ["test"]}
            :org.babashka/cli {:coerce {:nses [:symbol]
