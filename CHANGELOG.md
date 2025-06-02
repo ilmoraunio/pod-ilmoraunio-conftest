@@ -13,9 +13,23 @@ This project uses [Break Versioning][breakver]. The version numbers follow a
 
 [breakver]: https://github.com/ptaoussanis/encore/blob/master/BREAK-VERSIONING.md
 
-## 0.0.5-SNAPSHOT
+## 0.1.0
+
+This is essentially a rehash of 0.0.4, but this one communicates breaking
+changes.
+
+- BREAKING: Bump dependency versions for conftest, babashka, go, & for CI dependencies [#4](https://github.com/ilmoraunio/pod-ilmoraunio-conftest/pull/4)
+  - The output of HCL2 changes slightly. See
+    [open-policy-agent/conftest#1074](https://github.com/open-policy-agent/conftest/pull/1074)
+    and
+    [open-policy-agent/conftest#1006](https://github.com/open-policy-agent/conftest/issues/1006)
+    for more info.
+- Document configuration format parse outputs [#5](https://github.com/ilmoraunio/pod-ilmoraunio-conftest/pull/5)
 
 ## 0.0.4
+
+Edit: This version unintentionally contained breaking changes, see notes under
+[0.1.0](#010).
 
 - Bump dependency versions for conftest, babashka, go, & for CI dependencies [#4](https://github.com/ilmoraunio/pod-ilmoraunio-conftest/pull/4)
 
