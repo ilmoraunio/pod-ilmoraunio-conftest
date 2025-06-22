@@ -8,7 +8,7 @@ A [babashka pod](https://github.com/babashka/pods) for interacting with [conftes
 (ns my-ns
   (:require [babashka.pods :as pods]))
 
-(pods/load-pod 'ilmoraunio/conftest "0.0.4")
+(pods/load-pod 'ilmoraunio/conftest "0.1.1")
 (require '[pod.ilmoraunio.conftest :as conftest])
 ```
 
