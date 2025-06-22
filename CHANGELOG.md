@@ -13,6 +13,10 @@ This project uses [Break Versioning][breakver]. The version numbers follow a
 
 [breakver]: https://github.com/ptaoussanis/encore/blob/master/BREAK-VERSIONING.md
 
+## 0.1.1-SNAPSHOT
+
+- upgrade github.com/open-policy-agent/conftest to 0.61.2 [d0196cd](https://github.com/ilmoraunio/pod-ilmoraunio-conftest/commit/d0196cd69bc76c1fbee5e901f41e794c96db354d)
+
 ## 0.1.0
 
 This is essentially a rehash of 0.0.4, but this one communicates breaking
