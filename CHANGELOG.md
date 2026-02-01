@@ -15,6 +15,13 @@ This project uses [Break Versioning][breakver]. The version numbers follow a
 
 ## 0.1.2-SNAPSHOT
 
+- Upgrade Go version to 1.25.6 and github.com/open-policy-agent/conftest to
+  0.66.0
+[7705c7b](https://github.com/ilmoraunio/pod-ilmoraunio-conftest/commit/7705c7b34990e639c90264838c7c7e9a87a2ec67)
+- Upgrade CI dependencies: babashka to 1.12.214, actions/checkout to v6,
+  DeLaGuardo/setup-clojure to 13.5.2 + sync Go versions across platforms
+[51b50ee](https://github.com/ilmoraunio/pod-ilmoraunio-conftest/commit/51b50eeab84017d7449292884fa3aa7d0150ccc1)
+
 ## 0.1.1
 
 - upgrade github.com/open-policy-agent/conftest to 0.61.2 [d0196cd](https://github.com/ilmoraunio/pod-ilmoraunio-conftest/commit/d0196cd69bc76c1fbee5e901f41e794c96db354d)
