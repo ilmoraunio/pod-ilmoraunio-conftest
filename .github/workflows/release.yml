@@ -62,8 +62,14 @@ jobs:
           go-version: '1.25.6'
       - name: Add Go bin to PATH
         run: echo "$HOME/go/bin" >> $GITHUB_PATH
-      - name: Debug
-        run: go version && uname -a
+      - name: Debug Go setup
+        run: |
+          uname -a
+          go version
+          go env GOPATH
+          go env GOBIN
+          which go
+          ls -R $HOME/go/bin || true
       - name: Install deps
         run: go install
       - name: Build binary
@@ -99,8 +105,14 @@ jobs:
           go-version: '1.25.6'
       - name: Add Go bin to PATH
         run: echo "$HOME/go/bin" >> $GITHUB_PATH
-      - name: Debug
-        run: go version && uname -a
+      - name: Debug Go setup
+        run: |
+          uname -a
+          go version
+          go env GOPATH
+          go env GOBIN
+          which go
+          ls -R $HOME/go/bin || true
       - name: Install deps
         run: go install
       - name: Build binary
@@ -136,8 +148,14 @@ jobs:
           go-version: '1.25.6'
       - name: Add Go bin to PATH
         run: echo "$HOME/go/bin" >> $GITHUB_PATH
-      - name: Debug
-        run: go version && uname -a
+      - name: Debug Go setup
+        run: |
+          uname -a
+          go version
+          go env GOPATH
+          go env GOBIN
+          which go
+          ls -R $HOME/go/bin || true
       - name: Install deps
         run: go install
       - name: Build binary
