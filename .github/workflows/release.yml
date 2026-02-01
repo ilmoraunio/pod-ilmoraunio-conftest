@@ -128,6 +128,8 @@ jobs:
         run: go install
       - name: Build binary
         run: go build
+      - name: Run govulncheck
+        run: go tool govulncheck ./...
       - name: Test build
         run: ./scripts/test
       - name: Debug
