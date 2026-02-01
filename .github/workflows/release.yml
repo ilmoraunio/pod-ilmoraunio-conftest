@@ -29,6 +29,8 @@ jobs:
         run: go install
       - name: Build binary
         run: go build
+      - name: Run govulncheck
+        run: go tool govulncheck ./...
       - name: Test build
         run: .\bb.exe --config test.bb.edn test:bb
       - name: Debug
@@ -60,6 +62,8 @@ jobs:
         run: go install
       - name: Build binary
         run: go build
+      - name: Run govulncheck
+        run: go tool govulncheck ./...
       - name: Test build
         run: ./scripts/test
       - name: Debug
@@ -91,6 +95,8 @@ jobs:
         run: go install
       - name: Build binary
         run: go build
+      - name: Run govulncheck
+        run: go tool govulncheck ./...
       - name: Test build
         run: ./scripts/test
       - name: Debug
