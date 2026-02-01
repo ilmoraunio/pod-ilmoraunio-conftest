@@ -28,7 +28,7 @@ The namespace exposes two functions: `parse` and `parse-as`.
 
 Run `make build`.
 
-Assumes Go version 1.22+.
+Assumes Go version 1.25+.
 
 ### Test instructions
 
