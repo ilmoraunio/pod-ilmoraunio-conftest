@@ -13,6 +13,8 @@ This project uses [Break Versioning][breakver]. The version numbers follow a
 
 [breakver]: https://github.com/ptaoussanis/encore/blob/master/BREAK-VERSIONING.md
 
+## 0.1.3-SNAPSHOT
+
 ## 0.1.2
 
 - Upgrade Go version to 1.25.6 and github.com/open-policy-agent/conftest to
